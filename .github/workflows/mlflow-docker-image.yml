@@ -6,7 +6,7 @@ on:
     paths:
       - "mlflow/**"
       - "!mlflow/README.md"
-      - "!mlflow/**.yml"
+      - "!mlflow/docker-compose.yml"
 
 jobs:
 
