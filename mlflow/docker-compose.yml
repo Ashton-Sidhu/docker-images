@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+    postgres:
+        image: postgres:latest
+        environment:
+            - POSTGRES_USER=${MLFLOW_PG_USER}
+            - POSTGRES_PASSWORD=${MLFLOW_PG_PASS}
+            - POSTGRES_DB=${MLFLOW_DB}
+            # For persisting data
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        logging:
+            options:
+                max-size: 10m
+                max-file: "3"
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./pgdata:/var/lib/postgresql/data/pgdata
+
+    mlflow:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: bigsidhu/mlflow
+        container_name: mlflow_server
+        environment:
+            - DEFAULT_ARTIFACT_ROOT=/home/mlflow/mlruns
+        depends_on:
+            - postgres
+        restart: always
+        ports:
+            - "5000:5000"
+        # Extra mounts, i.e for your artifact store if you are using NFS
+        volumes:
+            - /home/sidhu/mlflow-mlruns/mlruns:/home/mlflow/mlruns
