@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gitsync-env-configmap
+data:
+  GIT_SYNC_REPO: https://www.github.com/Ashton-Sidhu/test_git_sync
+  GIT_SYNC_BRANCH: master
+  GIT_SYNC_ROOT: /git
+  GIT_SYNC_DEST: "sync"
+  GIT_SYNC_DEPTH: "1"
+  GIT_SYNC_ONE_TIME: "false"
+  GIT_SYNC_WAIT: "60"
+  GIT_SYNC_CREDENTIALS_SECRET: git-credentials

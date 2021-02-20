@@ -1,0 +1,18 @@
+debug = true
+
+logLevel = "INFO"
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+
+# Activate docker API
+[docker]
+domain = "docker.local"
+watch = true
+
+# Activate Traefik dashboard
+[api]
+  dashboard = true
+  insecure = true
