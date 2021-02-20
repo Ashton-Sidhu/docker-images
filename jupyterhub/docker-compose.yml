@@ -3,15 +3,16 @@ version: '3'
 services:
   # Configuration for Hub+Proxy
   jupyterhub:
-    build: jupyterhub                # Build the container from this folder.
+    build: .                # Build the container from this folder.
     container_name: jupyterhub_hub   # The service will use this container name.
     volumes:                         # Give access to Docker socket.
       - /var/run/docker.sock:/var/run/docker.sock
       - jupyterhub_data:/srv/jupyterlab
     environment:                     # Env variables passed to the Hub process.
-      DOCKER_JUPYTER_IMAGE: bigsidhu/jupyter-notebook
+      DOCKER_JUPYTER_IMAGE: docker.io/bigsidhu/jupyter-notebook:latest
       DOCKER_NETWORK_NAME: ${COMPOSE_PROJECT_NAME}_default
       HUB_IP: jupyterhub_hub
+      JUPYTERHUB_SINGLEUSER_APP: jupyter_server.serverapp.ServerAp'
     labels:                          # Traefik configuration.
       - "traefik.enable=true"
       - "traefik.http.routers.jupyterhub.rule=Host(`jupyter.dev.lan`)"

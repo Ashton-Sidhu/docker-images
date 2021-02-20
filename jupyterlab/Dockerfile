@@ -1,12 +1,12 @@
-FROM jupyter/tensorflow-notebook:latest
+FROM elyra/elyra:2.0.1
 
 USER root
 
-RUN apt-get update && apt-get install unixodbc-dev libpq-dev -y
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && apt-get update \
+    && apt-get install unixodbc-dev libpq-dev -y
 
 USER 1000
-
-RUN yes | bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"; exit 0
 
 RUN pip install -U jupyterlab \
     xgboost \
@@ -14,15 +14,18 @@ RUN pip install -U jupyterlab \
     imbalanced-learn \
     textblob \
     pyodbc \
+    tensorflow \
     xeus-python notebook \
-    jupyterlab-git \
-    jupyterlab_execute_time \
-    elyra \
-    jupyterlab-kite
+    jupyterlab_execute_time 
 
 RUN jupyter labextension install --no-build \
-    @krassowski/jupyterlab_go_to_definition
+    @krassowski/jupyterlab_go_to_definition 
+
+RUN mkdir -p /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/notebook-extension \
+    && echo '{"recordTiming": true}' > /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/notebook-extension/tracker.jupyterlab-settings
+
+RUN mkdir -p /home/jovyan/.jupyter/lab/user-settings/@krassowski/jupyterlab-lsp \
+    && echo '{"continuousHinting": true}' > /home/jovyan/.jupyter/lab/user-settings/@krassowski/jupyterlab-lsp/completion.jupyterlab-settings \
+    && echo '{"ignoreMessagesPatterns": ["W293", "W391", "E302"]}' > /home/jovyan/.jupyter/lab/user-settings/@krassowski/jupyterlab-lsp/diagnostics.jupyterlab-settings
 
 RUN jupyter lab build
-
-CMD ["/home/jovyan/.local/share/kite/kited"]
