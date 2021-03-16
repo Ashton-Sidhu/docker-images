@@ -4,7 +4,7 @@ USER root
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && apt-get update \
-    && apt-get install unixodbc-dev libpq-dev graphviz xdg-utils -y
+    && apt-get install unixodbc-dev libpq-dev graphviz graphviz-dev xdg-utils gcc -y
 
 USER 1000
 
@@ -17,7 +17,10 @@ RUN pip install -U jupyterlab \
     tensorflow \
     xeus-python notebook \
     jupyterlab_execute_time \
-    diagrams 
+    diagrams \
+    pygraphviz \
+    pefile \
+    networkx
 
 RUN jupyter labextension install --no-build \
     @krassowski/jupyterlab_go_to_definition 
