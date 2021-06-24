@@ -1,4 +1,4 @@
-name: Build JupyterLab Docker Image
+name: Update JupyterLab Docker Image
 
 on:
   schedule:
