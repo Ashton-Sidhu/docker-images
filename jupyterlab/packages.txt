@@ -21,3 +21,5 @@ altair
 lightgbm
 interpret
 yellowbrick
+statsmodels
+transformers
