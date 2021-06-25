@@ -23,5 +23,6 @@ jobs:
         run: |
           git config --global user.name "Github Action"
           git config --global user.email "github@action.com"
+          git add jupyterlab/README.md
           git commit -m "Updated packages list with new packages."
           git push
