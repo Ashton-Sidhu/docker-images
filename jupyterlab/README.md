@@ -27,4 +27,6 @@ The latest versions of:
 - lightgbm
 - interpret
 - yellowbrick
+- statsmodels
+- transformers
 ## Usage
