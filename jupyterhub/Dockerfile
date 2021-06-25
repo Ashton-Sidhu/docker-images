@@ -1,4 +1,4 @@
-FROM jupyterhub/jupyterhub:1.2
+FROM jupyterhub/jupyterhub:1.4
 
 # Copy the JupyterHub configuration in the container
 COPY jupyterhub_config.py .

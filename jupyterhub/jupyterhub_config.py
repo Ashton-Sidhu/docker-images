@@ -10,7 +10,7 @@ c.DockerSpawner.network_name = os.environ['DOCKER_NETWORK_NAME']
 c.JupyterHub.hub_connect_ip = os.environ['HUB_IP']
 c.JupyterHub.hub_ip = "127.0.0.1"
 
-# # For debugging
+# For debugging
 # c.JupyterHub.authenticator_class = "jupyterhub.auth.DummyAuthenticator"
 # c.DummyAuthenticator.password = ""
 
@@ -27,6 +27,7 @@ c.Spawner.default_url = '/lab'
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
 c.DockerSpawner.notebook_dir = notebook_dir
 c.DockerSpawner.volumes = {
-    '/home/sidhu': '/home/jovyan/work',
+    '/home/sidhu': notebook_dir,
 }
 c.DockerSpawner.debug = True
+c.DockerSpawner.start_timeout = 180
