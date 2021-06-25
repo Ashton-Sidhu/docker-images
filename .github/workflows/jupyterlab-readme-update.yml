@@ -1,0 +1,27 @@
+name: Update Jupyterlab README 
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "jupyterlab/packages.txt"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+      - name: Run update packages script 
+        run: python .ci/update_packages_readme.py
+      - name: Commit and Push README
+        run: |
+          git config --global user.name "Github Action"
+          git config --global user.email "github@action.com"
+          git commit -m "Updated packages list with new packages."
+          git push
