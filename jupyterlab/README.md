@@ -42,7 +42,9 @@ The latest versions of:
 
 To run this as a standalone Docker container run the following command:
 
-``
+`docker run --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes bigsidhu/jupyter-notebook`
+
+For more configuration options check out the [Jupyter Docker documentation](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html).
 
 ## Adding Libraries
 
