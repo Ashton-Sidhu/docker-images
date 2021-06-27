@@ -12,9 +12,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 # MLFlow
-ARG MLFLOW_VERSION=1.14.0
 ARG MLFLOW_USER_HOME=/home/mlflow
-
 
 # Define en_US.
 ENV LANGUAGE en_US.UTF-8
@@ -24,7 +22,7 @@ ENV LC_CTYPE en_US.UTF-8
 ENV LC_MESSAGES en_US.UTF-8
 
 RUN useradd -ms /bin/bash -d ${MLFLOW_USER_HOME} mlflow \
-    && pip install mlflow==$MLFLOW_VERSION \
+    && pip install mlflow \
     && pip install psycopg2-binary \
     && chown -R mlflow: ${MLFLOW_USER_HOME}
 

@@ -3,7 +3,7 @@ import sys
 
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 c.DockerSpawner.image = os.environ['DOCKER_JUPYTER_IMAGE']
-c.DockerSpawner.network_name = os.environ['DOCKER_NETWORK_NAME']
+# c.DockerSpawner.network_name = os.environ['DOCKER_NETWORK_NAME']
 
 # https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html
 # c.DockerSpawner.cmd=["jupyter-labhub"]
