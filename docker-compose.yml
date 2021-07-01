@@ -40,17 +40,28 @@ services:
   jupyterhub:
     image: docker.io/bigsidhu/jupyterhub                # Build the container from this folder.
     container_name: jupyterhub   # The service will use this container name.
-    volumes:                         # Give access to Docker socket.
-      - /var/run/docker.sock:/var/run/docker.sock
     environment:                     # Env variables passed to the Hub process.
       DOCKER_JUPYTER_IMAGE: docker.io/bigsidhu/jupyter-notebook:latest
       DOCKER_NETWORK_NAME: docker-images_default
       HUB_IP: jupyterhub
     restart: unless-stopped
+    volumes:                         # Give access to Docker socket.
+      - /var/run/docker.sock:/var/run/docker.sock
     labels:                          # Traefik configuration.
       - "traefik.enable=true"
       - "traefik.http.routers.jupyterhub.rule=Host(`jupyter.dev.lan`)"
       - "traefik.http.routers.jupyterhub.entrypoints=web"
+
+  jupyterlab:
+    image: docker.io/bigsidhu/jupyter-notebook
+    container_name: jupyterlab
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    ports:
+      - "8888:8888"
+    restart: unless-stopped
+    volumes:
+      - ${PWD}:/home/jovyan/work
 
   mlflow:
     image: mlflow
