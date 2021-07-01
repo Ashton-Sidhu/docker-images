@@ -11,10 +11,13 @@ POSTGRES_PORT="${POSTGRES_PORT:-5432}"
 POSTGRES_USER="${POSTGRES_USER:-postgres}"
 POSTGRES_PASS="${POSTGRES_PASSWORD:-postgres}"
 POSTGRES_DB="${POSTGRES_DB:-postgres}"
+HOST = "${HOST:-0.0.0.0}"
+PORT = "${PORT:-5000}"
 
 CONN_STRING="postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASS}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}${POSTGRES_EXTRAS}"
 
 mlflow server \
     --backend-store-uri "${CONN_STRING}" \
     --default-artifact-root "${DEFAULT_ARTIFACT_ROOT}" \
-    --host 0.0.0.0
+    --host "${HOST}" \
+    --port "${PORT}"
