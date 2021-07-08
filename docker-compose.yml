@@ -57,6 +57,8 @@ services:
     container_name: jupyterlab
     environment:
       - JUPYTER_ENABLE_LAB=yes
+      - AWS_SHARED_CREDENTIALS_FILE=/home/jovyan/work/.aws/credentials
+      - AWS_CONFIG_FILE=/home/jovyan/work/.aws/config
     ports:
       - "8888:8888"
     restart: unless-stopped
