@@ -17,7 +17,7 @@ The latest versions of:
 - imbalanced-learn 
 - textblob 
 - pyodbc 
-- xeus-python
+- xeus-python 
 - notebook
 - diagrams 
 - pygraphviz 
@@ -37,7 +37,8 @@ The latest versions of:
 - yellowbrick
 - statsmodels
 - transformers
-
+- elasticsearch-dsl>=7.0.0,<8.0.0
+- eland<8.0.0
 ## Usage
 
 To run this as a standalone Docker container run the following command:
