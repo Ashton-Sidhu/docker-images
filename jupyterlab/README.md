@@ -38,7 +38,7 @@ The latest versions of:
 - statsmodels
 - transformers
 - elasticsearch-dsl>=7.0.0,<8.0.0
-- eland<8.0.0
+- eland
 ## Usage
 
 To run this as a standalone Docker container run the following command:
