@@ -2,7 +2,7 @@
 services:
   # Configuration for Hub+Proxy
   jupyterhub:
-    image: jupyterhub                # Build the container from this folder.
+    image: docker.io/bigsidhu/jupyter-hub         # Build the container from this folder.
     container_name: jupyterhub   # The service will use this container name.
     environment:                     # Env variables passed to the Hub process.
       DOCKER_JUPYTER_IMAGE: docker.io/bigsidhu/jupyter-notebook:latest
