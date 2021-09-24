@@ -7,4 +7,4 @@ COPY jupyterhub_config.py .
 COPY cull_idle_servers.py .
 
 # Install dependencies (for advanced authentication and spawning)
-RUN pip install dockerspawner
+RUN pip install dockerspawner jupyterhub-ldapauthenticator
