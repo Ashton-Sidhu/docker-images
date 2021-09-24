@@ -1,19 +1,5 @@
 version: '3.7'
 services:
-    postgres:
-        image: postgres:latest
-        environment:
-            - POSTGRES_USER=airflow
-            - POSTGRES_PASSWORD=airflow
-            - POSTGRES_DB=airflow
-            - PGDATA=/var/lib/postgresql/data/pgdata
-        logging:
-            options:
-                max-size: 10m
-                max-file: "3"
-        volumes:
-            - ./pgdata:/var/lib/postgresql/data/pgdata
-
     webserver:
         build:
             context: .
