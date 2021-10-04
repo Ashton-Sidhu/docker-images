@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 # User-provided configuration must always be respected.
 #
@@ -18,5 +19,6 @@ CONN_STRING="postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTG
 
 mlflow server \
     --backend-store-uri "${CONN_STRING}" \
+    --default-artifact-root "file://${DEFAULT_ARTIFACT_ROOT}" \
     --host "${HOST}" \
     --port "${PORT}"
