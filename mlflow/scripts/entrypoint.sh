@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 # User-provided configuration must always be respected.
 #
