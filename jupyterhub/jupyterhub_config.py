@@ -38,6 +38,7 @@ notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
 c.DockerSpawner.notebook_dir = notebook_dir
 c.DockerSpawner.volumes = {
     '/home/sidhu': notebook_dir,
+    '/opt/mlruns': '/home/jovyan/shared/mlruns'
 }
 c.DockerSpawner.debug = True
 c.DockerSpawner.start_timeout = 180
