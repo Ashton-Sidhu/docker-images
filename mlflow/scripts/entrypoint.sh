@@ -16,6 +16,8 @@ PORT="${PORT:-5000}"
 
 CONN_STRING="postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}${POSTGRES_EXTRAS}"
 
+cd $DEFAULT_ARTIFACT_ROOT;
+
 mlflow server \
     --backend-store-uri "${CONN_STRING}" \
     --default-artifact-root "file://${DEFAULT_ARTIFACT_ROOT}" \
